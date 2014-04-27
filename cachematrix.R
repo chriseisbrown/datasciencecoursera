@@ -4,7 +4,7 @@
 ## cacheSolve      - demonstrates how to use the cached matrix, returning a previously 
 ##                   computed inverse if it exists. 
 
-## This function creates a cached matrix object. This is a holder for the original, 
+## makeCacheMatrix creates a cached matrix object. This is a holder for the original, 
 ## passed in matrix and for that matrix inverted. Matrix inversion is done 
 ## externally to this object.
 makeCacheMatrix <- function(x = matrix()) {
@@ -28,7 +28,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function takes a cacheMatrix object and inverts it. If a previous inversion has
+## cacheSolve takes a cacheMatrix object and inverts it. If a previous inversion has
 ## been carried out then it returns the cached result to avoid costly recomputation.
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
@@ -39,6 +39,8 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")
         return(mData)
     }
+    
+    ## there isn't one already cached, so invert and put in cache holder
     mData <- x$get()
     mInverted <- solve(mData, ...)
     x$setInverted(mInverted)
