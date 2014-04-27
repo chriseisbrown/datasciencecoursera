@@ -16,3 +16,8 @@ t
 tcachedMatrix <- makeCacheMatrix(t)
 tt <- cacheSolve(tcachedMatrix)
 tt
+
+## check that the cached version is being returned from the cachedMatrices
+## (should put out a message to say "getting cached data")
+t <- cacheSolve(cachedMatrix)
+tt <- cacheSolve(tcachedMatrix)
